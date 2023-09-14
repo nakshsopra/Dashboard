@@ -1,0 +1,48 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="com.ss.jpb.rp.controller.Home"
+>
+    <Page id="_IDGenPage1" title="{i18n>appTitle}" >
+        <headerContent>
+        </headerContent>
+        
+        <content>
+
+            <GenericTile id="_IDGenGenericTile1"
+                class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                header="{i18n>Families}"
+                subheader="{i18n>descriptionFamilies}"
+                press="onFamily"
+            >
+                <TileContent id="_IDGenTileContent1" >                    
+                    <ImageContent id="_IDGenImageContent1" src="sap-icon://family-care" />
+                </TileContent>
+            </GenericTile>
+
+            <GenericTile id="_IDGenGenericTile2"
+                class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                header="{i18n>Roles}"
+                subheader="{i18n>descriptionRoles}"
+                press="onRole"
+            >
+                <TileContent id="_IDGenTileContent2" >                    
+                    <ImageContent id="_IDGenImageContent2" src="sap-icon://role" />
+                </TileContent>
+            </GenericTile>
+
+            <GenericTile id="_IDGenGenericTile3"
+                class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                header="{i18n>Competencies}"
+                press="onCompetencies"
+                subheader=""
+            >
+                <TileContent id="_IDGenTileContent3">                    
+                    <ImageContent id="_IDGenImageContent3" src="sap-icon://documents" />
+                </TileContent>
+            </GenericTile>
+
+        </content>
+        
+    </Page>
+</mvc:View>

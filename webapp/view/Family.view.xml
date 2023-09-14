@@ -1,0 +1,33 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="com.ss.jpb.rp.controller.Family"
+>
+    <Page id="_IDGenPage1"
+        title="Families"
+        showNavButton="true"
+        navButtonPress="onBack"
+    >
+        <content>
+            <SplitApp id="id-family-splitapp">
+                <masterPages>
+                    <List
+                        mode="SingleSelectMaster"
+                        id="idList"
+                        selectionChange="onSelectItem"
+                        growingScrollToLoad="true"
+                        items="{path: '/FamilyEntity'}"
+                    >
+                    <items>
+                    
+                    <ObjectListItem id="_IDGenObjectListItem1"  title="{name_en_US}" 
+                    intro="{position}" 
+                    ></ObjectListItem>
+                    
+                </items>
+                    </List>
+                </masterPages>
+            </SplitApp>
+        </content>
+    </Page>
+</mvc:View>

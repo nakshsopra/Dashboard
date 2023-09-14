@@ -1,0 +1,199 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "com.ss.jpb.rp",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.10.6",
+      "toolsId": "e3fd8d96-88e0-4e59-a359-cff3bea97556"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v2/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.117.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.ss.jpb.rp.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "com.ss.jpb.rp.view",
+        "controlAggregation": "pages",
+        "controlId": "appCon",
+        "clearControlAggregation": true
+      },
+      "routes": [
+        {
+          "name": "home",
+          "pattern": "",
+          "target": [
+            "home"
+          ]
+        },
+        {
+          "name": "family",
+          "pattern": "family",
+          "target": [
+            "family"
+          ]
+        },
+        {
+          "name": "familyDetails",
+          "pattern": "family/{familyID}",
+          "target": [
+            "family",
+            "familyDetails"
+          ]
+        },
+        {
+          "name": "role",
+          "pattern": "role",
+          "target": [
+            "role"
+          ]
+        },
+        {
+          "name": "roleDetails",
+          "pattern": "role/{roleID}",
+          "target": [
+            "role",
+            "roleDetails"
+          ]
+        },
+        {
+          "name": "competencies",
+          "pattern": "competencies",
+          "target": [
+            "competencies"
+          ]
+        },
+        {
+          "name": "compare",
+          "pattern": "compare",
+          "target":[
+            "compare"
+          ]
+        }
+      ],
+      "targets": {
+        "home": {
+          "viewName": "Home",
+          "viewId": "idHome",
+          "controlAggregation": "pages"
+        },
+        "family": {
+          "viewName": "Family",
+          "viewId": "idFamily",
+          "controlAggregation": "pages"
+        },
+        "familyDetails": {
+          "viewName": "FamilyDetails",
+          "viewId": "idFamilyDetails",
+          "controlAggregation": "detailPages",
+          "controlId": "id-family-splitapp",
+          "targetParent": "idFamily",
+          "parent": "family"
+        },
+        "role": {
+          "viewName": "Role",
+          "viewId": "idRole",
+          "controlAggregation": "pages"
+        },
+        "roleDetails": {
+          "viewName": "RoleDetails",
+          "viewId": "idRoleDetails",
+          "controlAggregation": "detailPages",
+          "controlId": "id-role-splitapp",
+          "targetParent": "idRole",
+          "parent": "role"
+        },
+        "competencies": {
+          "viewName": "Competencies",
+          "viewId": "idCompetencies",
+          "controlAggregation": "pages"
+        },
+        "compare":{
+          "viewName": "Compare",
+          "viewId": "idCompare",
+          "controlAggregation": "pages"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.ss.jpb.rp.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "idRoot"
+    }
+  }
+}

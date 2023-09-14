@@ -1,0 +1,15 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="com.ss.jpb.rp.controller.Compare"
+>
+    <Page id="_IDGenPage1"
+        title="Compare"
+        showNavButton="true"
+        navButtonPress="onBack"
+    >
+        <content>
+
+        </content>
+    </Page>
+</mvc:View>

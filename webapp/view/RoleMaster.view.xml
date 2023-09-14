@@ -1,0 +1,28 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="com.ss.jpb.rp.controller.RoleMaster"
+>
+    <Page
+        id="_IDGenPage1"
+        title="Roles"
+    >
+        <content>
+            <List
+                mode="MultiSelect"
+                id="idList"
+                selectionChange="onSelectItem"
+                growingScrollToLoad="true"
+                items="{path: '/RoleEntity'}"
+            >
+                <items>
+                    <!-- To display business object for user -->
+                    <ObjectListItem
+                        id="_IDGenObjectListItem1"
+                        title="{name_en_US}"
+                    />
+                </items>
+            </List>
+        </content>
+    </Page>
+</mvc:View>

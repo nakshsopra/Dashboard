@@ -1,0 +1,21 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.ss.jpb.rp.controller.RoleDetails">
+    <Page id="_IDGenPage1" title="Role Details">
+        <ObjectHeader id="_IDGenObjectHeader1" intro="{externalCode}" title="{name_en_US}"></ObjectHeader>
+        <IconTabBar id="_IDGenIconTabBar1">
+            <items>
+                <!-- Tab1 -->
+                <IconTabFilter id="_IDGenIconTabFilter1" text="Mapped Skills" icon="sap-icon://accelerated">
+                    
+                </IconTabFilter>
+                <!-- Tab2 -->
+                <IconTabFilter id="_IDGenIconTabFilter2" text="Family Skills" icon="sap-icon://supplier">
+                    
+                </IconTabFilter>
+                <!-- Tab3 -->
+                <IconTabFilter id="_IDGenIconTabFilter3" text="Family Competencies" icon="sap-icon://home">
+                    
+                </IconTabFilter>
+            </items>
+        </IconTabBar>
+    </Page>
+</mvc:View>
