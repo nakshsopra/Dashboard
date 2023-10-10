@@ -12,6 +12,27 @@ sap.ui.define([
             var sIndex = oEvent.getParameter("arguments").familyID;
             var sPath = '/' + sIndex;
             this.getView().bindElement(sPath);
+            var id = sPath.replace(/\D/g, '');
+            var oroleTable = this.getView().byId("familyTable");
+            var url = "apiOData>/RoleEntity";
+            var template = this.getView().byId("_IDGenColumnListItem1");
+            this.getView().getModel().read(url, {
+                success: function(odata, oresponse){
+                    debugger;
+                }
+            })
+            oroleTable.bindItems({
+                path: url,
+                templateShareable: false,
+                template: template.clone(),
+                filters: [
+                    new sap.ui.model.Filter({
+                        path : 'family',
+                        operator : sap.ui.model.FilterOperator.EQ,
+                        value1: id
+                    })
+                ]
+            });
         },
 
         onBack: function(){

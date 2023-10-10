@@ -34,8 +34,8 @@
             <GenericTile id="_IDGenGenericTile3"
                 class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                 header="{i18n>Competencies}"
+                subheader="{i18n>descriptionCompetencies}"
                 press="onCompetencies"
-                subheader=""
             >
                 <TileContent id="_IDGenTileContent3">                    
                     <ImageContent id="_IDGenImageContent3" src="sap-icon://documents" />

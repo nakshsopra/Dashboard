@@ -16,12 +16,12 @@
                         id="idList"
                         selectionChange="onSelectItem"
                         growingScrollToLoad="true"
-                        items="{path: '/FamilyEntity'}"
+                        items="{path: 'apiOData>/FamilyEntity'}"
                     >
                     <items>
                     
-                    <ObjectListItem id="_IDGenObjectListItem1"  title="{name_en_US}" 
-                    intro="{position}" 
+                    <ObjectListItem id="_IDGenObjectListItem1"  title="{apiOData>name_localized}" 
+                    intro="{apiOData>position}" 
                     ></ObjectListItem>
                     
                 </items>

@@ -1,21 +1,25 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.ss.jpb.rp.controller.RoleDetails">
+<mvc:View xmlns:table="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.ss.jpb.rp.controller.RoleDetails">
     <Page id="_IDGenPage1" title="Role Details">
-        <ObjectHeader id="_IDGenObjectHeader1" intro="{externalCode}" title="{name_en_US}"></ObjectHeader>
-        <IconTabBar id="_IDGenIconTabBar1">
-            <items>
-                <!-- Tab1 -->
-                <IconTabFilter id="_IDGenIconTabFilter1" text="Mapped Skills" icon="sap-icon://accelerated">
-                    
-                </IconTabFilter>
-                <!-- Tab2 -->
-                <IconTabFilter id="_IDGenIconTabFilter2" text="Family Skills" icon="sap-icon://supplier">
-                    
-                </IconTabFilter>
-                <!-- Tab3 -->
-                <IconTabFilter id="_IDGenIconTabFilter3" text="Family Competencies" icon="sap-icon://home">
-                    
-                </IconTabFilter>
-            </items>
-        </IconTabBar>
+        <ObjectHeader id="_IDGenObjectHeader1" title="{i18n>compareRoles}"></ObjectHeader>
+        <content>
+            <table:Table id="_IDGenTable1"  >
+                <table:columns>
+                    <table:Column id="_IDGenColumn1" >
+                        <Text id="_IDGenText1" text="Job roles"></Text>
+                    </table:Column>
+                    <table:Column id="_IDGenColumn2" >
+                        <Text id="_IDGenText2" text="Job code"></Text>
+                    </table:Column>
+                    <table:Column id="_IDGenColumn3" >
+                        <Text id="_IDGenText3" text="Competency"></Text>
+                    </table:Column>
+                    <table:Column id="_IDGenColumn4" >
+                        <Text id="_IDGenText4" text="Job description"></Text>
+                    </table:Column>
+                </table:columns>
+                <table:rows>
+                </table:rows>
+            </table:Table>
+        </content>
     </Page>
 </mvc:View>

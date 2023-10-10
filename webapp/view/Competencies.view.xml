@@ -3,13 +3,29 @@
     xmlns="sap.m"
     controllerName="com.ss.jpb.rp.controller.Competencies"
 >
-    <Page id="_IDGenPage1"
+    <Page
+        id="_IDGenPage1"
         title="Competencies"
         showNavButton="true"
         navButtonPress="onBack"
     >
         <content>
-
+            <List
+                mode="SingleSelectMaster"
+                id="idList"
+                selectionChange="onSelectItem"
+                growingScrollToLoad="true"
+                items="{path: 'apiOData>/CompetencyEntity'}"
+            >
+                <items>
+                    <ObjectListItem
+                        id="_IDGenObjectListItem1"
+                        intro="{apiOData>name_localized}"
+                        title="{apiOData>description_localized}"
+                        
+                    />
+                </items>
+            </List>
         </content>
     </Page>
 </mvc:View>

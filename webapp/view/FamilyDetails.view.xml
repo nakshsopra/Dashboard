@@ -1,20 +1,64 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.ss.jpb.rp.controller.FamilyDetails">
-    <Page id="_IDGenPage1" title="Family Details">
-        <ObjectHeader id="_IDGenObjectHeader1" intro="{externalCode}" title="{name_en_US}"></ObjectHeader>
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="com.ss.jpb.rp.controller.FamilyDetails"
+>
+    <Page
+        id="_IDGenPage1"
+        title="Family Details"
+    >
+        <ObjectHeader
+            id="_IDGenObjectHeader1"
+            intro="{apiOData>externalCode}"
+            title="{apiOData>name_localized}"
+        />
         <IconTabBar id="_IDGenIconTabBar1">
             <items>
                 <!-- Tab1 -->
-                <IconTabFilter id="_IDGenIconTabFilter1" text="Roles" icon="sap-icon://accelerated">
-                    
+                <IconTabFilter
+                    id="_IDGenIconTabFilter1"
+                    text="Roles"
+                    icon="sap-icon://accelerated"
+                >
+                    <content>
+                        <Table
+                            id="familyTable"
+                            inset="false"
+                            showSeparators="Inner"
+                        >
+                            <columns>
+                                <Column id="_IDGenColumn1">
+                                    <Label
+                                        id="_IDGenLabel1"
+                                        text="Role"
+                                    />
+                                </Column>
+                            </columns>
+                            <dependents>
+                                <ColumnListItem id="_IDGenColumnListItem1">
+                                    <cells>
+                                        <Text
+                                            id="_IDGenText1"
+                                            text="{apiOData>name_localized}"
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </dependents>
+                        </Table>
+                    </content>
                 </IconTabFilter>
                 <!-- Tab2 -->
-                <IconTabFilter id="_IDGenIconTabFilter2" text="Family Skills" icon="sap-icon://supplier">
-                    
-                </IconTabFilter>
+                <IconTabFilter
+                    id="_IDGenIconTabFilter2"
+                    text="Family Skills"
+                    icon="sap-icon://supplier"
+                />
                 <!-- Tab3 -->
-                <IconTabFilter id="_IDGenIconTabFilter3" text="Family Competencies" icon="sap-icon://home">
-                    
-                </IconTabFilter>
+                <IconTabFilter
+                    id="_IDGenIconTabFilter3"
+                    text="Family Competencies"
+                    icon="sap-icon://home"
+                />
             </items>
         </IconTabBar>
     </Page>
