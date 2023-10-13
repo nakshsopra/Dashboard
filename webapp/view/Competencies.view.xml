@@ -15,13 +15,13 @@
                 id="idList"
                 selectionChange="onSelectItem"
                 growingScrollToLoad="true"
-                items="{path: 'apiOData>/CompetencyEntity'}"
+                items="{path: '/CompetencyEntity'}"
             >
                 <items>
                     <ObjectListItem
                         id="_IDGenObjectListItem1"
-                        intro="{apiOData>name_localized}"
-                        title="{apiOData>description_localized}"
+                        intro="{name_localized}"
+                        title="{description_localized}"
                         
                     />
                 </items>

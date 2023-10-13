@@ -9,8 +9,8 @@
     >
         <ObjectHeader
             id="_IDGenObjectHeader1"
-            intro="{apiOData>externalCode}"
-            title="{apiOData>name_localized}"
+            intro="{externalCode}"
+            title="{name_localized}"
         />
         <IconTabBar id="_IDGenIconTabBar1">
             <items>
@@ -39,7 +39,7 @@
                                     <cells>
                                         <Text
                                             id="_IDGenText1"
-                                            text="{apiOData>name_localized}"
+                                            text="{name_localized}"
                                         />
                                     </cells>
                                 </ColumnListItem>
