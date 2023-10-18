@@ -196,25 +196,52 @@
                     <!-- Tab3 -->
                     <IconTabFilter
                         id="_IDGenIconTabFilter3"
-                        text="Description"
+                        text="Short description"
                     >
                         <content>
                             <ScrollContainer
                                 id="_IDGenScrollContainer3"
                                 horizontal="true"
+                                vertical="true"
                             >
                                 <HBox
                                     id="_IDGenHBox3"
                                     items="{roles>/jobDescription}"
                                 >
-                                
-                                    <VBox id="_IDGenVBox1">
-                                        
-                                        
+                                    <VBox id="_IDGenVBox1" class="sapUiTinyMargin" width="50%">
+                                        <Label id="_IDGenLabel1" text="{roles>name}" class="sapUiTinyMargin"/>
+
+                                        <FormattedText
+                                            id="_IDGenFormattedText1"
+                                            htmlText="{roles>roleshortDescription}"
+                                        />
                                     </VBox>
                                 </HBox>
                             </ScrollContainer>
                         </content>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        id="_IDGenIconTabFilter4"
+                        text="Long description"
+                    >
+                        <HBox
+                            id="_IDGenHBox4"
+                            items="{roles>/jobDescription}"
+                        >
+                            <VBox id="_IDGenVBox2" width="50%">
+                                <Label id="_IDGenLabel2" text="{roles>name}" class="sapUiTinyMargin" />
+
+                                <!-- <Text
+                                    id="_IDGenText2"
+                                    text="{roles>name}"
+                                /> -->
+
+                                <FormattedText
+                                    id="_IDGenFormattedText2"
+                                    htmlText="{roles>rolelongDescription}"
+                                />
+                            </VBox>
+                        </HBox>
                     </IconTabFilter>
                 </items>
             </IconTabBar>

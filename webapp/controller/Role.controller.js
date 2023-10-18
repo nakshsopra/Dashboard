@@ -55,10 +55,11 @@ sap.ui.define([
             if (bSelected) {
                 this.fetchJobCode(sIndex);
                 this.fetchJobCompetencies(sIndex);
-                //this.fetchJobDescription(sIndex);
+                this.fetchJobDescription(sIndex);
             } else {
                 this.removeJobCode(sIndex);
                 this.removeJobCompetency(sIndex);
+                this.removeJobDescription(sIndex);
             }
             this.onGoTo(sIndex);
         },
@@ -83,6 +84,19 @@ sap.ui.define([
             for (var i = 0; i < oArray.length; i++) {
                 if (sIndex == oArray[i].externalCode) {
                     oArray.splice(i, 1); // deletes one element from i to 1
+                    i--;
+                }
+            }
+            oRoleModel.refresh();
+        },
+
+        removeJobDescription: function(sIndex){
+            let oRoleModel = this.getView().getModel("roles");
+            let oArray = oRoleModel.getProperty("/jobDescription");
+            var sIndex = sIndex.replace(/\D/g, '');
+            for(let i=0; i<oArray.length;i++){
+                if(sIndex == oArray[i].role){
+                    oArray.splice(i,1);
                     i--;
                 }
             }
