@@ -34,7 +34,6 @@ sap.ui.define([
                     })
                 ]
             });
-            debugger;
         },
 
         onBack: function () {

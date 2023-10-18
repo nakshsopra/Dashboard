@@ -1,4 +1,6 @@
 <mvc:View
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     controllerName="com.ss.jpb.rp.controller.Competencies"
@@ -10,7 +12,43 @@
         navButtonPress="onBack"
     >
         <content>
-            <List
+            <Table
+                id="_IDGenTable1"
+                items="{path: '/CompetencyEntity'}"
+            >
+                <columns>
+                    <Column id="_IDGenColumn1">
+                        <Text id="_IDGenText1" text="Name"></Text>
+                    </Column>
+                    <Column id="_IDGenColumn2" >
+                        <Text id="_IDGenText2" text="Description"></Text>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="_IDGenColumnListItem1">
+                        <cells>
+                            <ObjectIdentifier id="_IDGenObjectIdentifier1"
+                                title="{name_localized}"
+                                
+                            />
+                            <core:HTML
+                                id="competencyDes"
+                                content="&lt;div&gt;{description_localized}&lt;/div&gt;"
+                            />
+                            <!-- <core:HTML id="competencyName" content="&lt;div&gt;{name_localized}&lt;/div&gt;"></core:HTML> -->
+                        </cells>
+                    </ColumnListItem>
+                    <!-- <ColumnListItem id="_IDGenColumnListItem1">
+                        <cells>
+                            <core:HTML
+                                id="competencyDes"
+                                content="&lt;div&gt;{description_localized}&lt;/div&gt;"
+                            />
+                        </cells>
+                    </ColumnListItem> -->
+                </items>
+            </Table>
+            <!-- <List
                 mode="SingleSelectMaster"
                 id="idList"
                 selectionChange="onSelectItem"
@@ -22,10 +60,9 @@
                         id="_IDGenObjectListItem1"
                         intro="{name_localized}"
                         title="{description_localized}"
-                        
                     />
                 </items>
-            </List>
+            </List> -->
         </content>
     </Page>
 </mvc:View>

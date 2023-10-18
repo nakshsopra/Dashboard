@@ -23,20 +23,20 @@ sap.ui.define([
         
         showDetail: function(oEvent){
             // Get a reference to the table control
-            var oTable = this.getView().byId("myTable");
+            /* var oTable = this.getView().byId("myTable");
 
             // Get a reference to the JSON model
             var oJSONModel = this.getView().getModel("jsonModel");
 
             // Bind the table to the JSON model
-            oTable.setModel(oJSONModel);
+           // oTable.setModel(oJSONModel);
 
             var sIndex = oEvent.getParameter("arguments").roleID;
             var sPath = '/' + sIndex;
             this.getView().bindElement({
                 path: sPath,
                 parameters: {expand: 'roleCompetencyMappings'}
-            });
+            }); */
         },
 
         onBack: function(){

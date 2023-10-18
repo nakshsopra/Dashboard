@@ -11,6 +11,7 @@
         <content>
             <SplitApp id="id-family-splitapp">
                 <masterPages>
+                <ScrollContainer id="_IDGenScrollContainer1" vertical="true" height="100%">
                     <List
                         mode="SingleSelectMaster"
                         id="idList"
@@ -26,6 +27,7 @@
                     
                 </items>
                     </List>
+                    </ScrollContainer>
                 </masterPages>
             </SplitApp>
         </content>

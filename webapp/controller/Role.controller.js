@@ -7,20 +7,38 @@ sap.ui.define([
     return BaseController.extend("com.ss.jpb.rp.controller.Role", {
 
         onInit: function () {
-            var oODataModel = new ODataModel("/odata/v2/", true);
-            oODataModel.read("/RoleEntity", {
-                success: function (oData) {
-                    // Data has been successfully loaded from the OData service
-                    // oData will contain the fetched data
-                    var oJSONModel = new JSONModel(oData);
+            this.oRouter = this.getOwnerComponent().getRouter();
+            this.oRouter.getRoute("role").attachMatched(this.afterLoading, this);
+            /* var oODataModel = new ODataModel("/odata/v2/", true);
+           oODataModel.read("/RoleEntity", {
+               success: function (oData) {
+                   // Data has been successfully loaded from the OData service
+                   // oData will contain the fetched data
+                   var oJSONModel = new JSONModel(oData);
 
-                    // Set the JSON model to the view
-                    sap.ui.getCore().setModel(oJSONModel, "jsonModel");
-                }.bind(this),
-                error: function (oError) {
-                    // Handle error
-                }
-            });
+                   // Set the JSON model to the view
+                   sap.ui.getCore().setModel(oJSONModel, "jsonModel");
+               }.bind(this),
+               error: function (oError) {
+                   // Handle error
+               }
+           });  */
+
+        },
+
+        afterLoading: function () {
+            var oStructure = {
+                "jobCodes": [
+
+                ],
+                "jobCompetencies": [
+
+                ],
+                "jobDescription": [
+
+                ]
+            }
+            this.getView().getModel("roles").setData(oStructure);
         },
 
         onBack: function () {
@@ -34,22 +52,23 @@ sap.ui.define([
             var sIndex = sPath.replace(/\D/g, '');
             var sIndex = sPath.split("/")[sPath.split("/").length - 1];
             var bSelected = oEvent.getParameter("selected");
-            if(bSelected){
+            if (bSelected) {
                 this.fetchJobCode(sIndex);
                 this.fetchJobCompetencies(sIndex);
-            } else{
+                //this.fetchJobDescription(sIndex);
+            } else {
                 this.removeJobCode(sIndex);
                 this.removeJobCompetency(sIndex);
             }
             this.onGoTo(sIndex);
         },
 
-        removeJobCode: function(sIndex){
+        removeJobCode: function (sIndex) {
             var oRoleModel = this.getView().getModel("roles");
             var oArray = oRoleModel.getProperty("/jobCodes");
             var sIndex = sIndex.replace(/\D/g, '');
             for (var i = 0; i < oArray.length; i++) {
-                if(sIndex == oArray[i].externalCode){
+                if (sIndex == oArray[i].externalCode) {
                     oArray.splice(i, 1); // deletes one element from i to 1
                     i--;
                 }
@@ -57,22 +76,62 @@ sap.ui.define([
             oRoleModel.refresh();
         },
 
-        removeJobCompetency: function(sIndex){
+        removeJobCompetency: function (sIndex) {
             var oRoleModel = this.getView().getModel("roles");
             var oArray = oRoleModel.getProperty("/jobCompetencies");
             var sIndex = sIndex.replace(/\D/g, '');
             for (var i = 0; i < oArray.length; i++) {
-                if(sIndex == oArray[i].externalCode){
+                if (sIndex == oArray[i].externalCode) {
                     oArray.splice(i, 1); // deletes one element from i to 1
                     i--;
                 }
             }
             oRoleModel.refresh();
+        },
+
+        fetchJobDescription: function (sIndex) {
+
+            var sIndex = sIndex.replace(/\D/g, '');
+            var oFilter = new sap.ui.model.Filter("role", sap.ui.model.FilterOperator.EQ, sIndex);
+            var url = "/JobProfile";
+            var oModel = this.getView().getModel();
+
+            oModel.read(url, {
+                filters: [oFilter],
+                urlParameters: {
+                    "$expand": "longDesciptions, shortDesciptions",
+                    "$select": "role, externalCode, name_localized, longDesciptions/desc_localized, shortDesciptions/desc_localized"
+                },
+
+                success: function (oRoleDescription) {
+
+                    // due to asy call this will not refer the current object
+                    var oRoleModel = this.getView().getModel("roles");
+                    //var oArray = [];// this will replace the current value so we need to use getProperty
+                    var oArray = oRoleModel.getProperty("/jobDescription");
+                    //for (var i = 0; i < oJobCode.jobCodeMappings.results.length; i++) {
+                    var tmp = {
+                        "externalCode": oRoleDescription.results[0].externalCode,
+                        "name": oRoleDescription.results[0].name_localized,
+                        "role": oRoleDescription.results[0].role,
+                        "roleshortDescription": oRoleDescription.results[0].shortDesciptions.results[0].desc_localized,
+                        "rolelongDescription": oRoleDescription.results[0].longDesciptions.results[0].desc_localized,
+                    }
+
+                    oArray.push(tmp);
+                    // }
+                    oRoleModel.setProperty("/jobDescription", oArray);
+                }.bind(this), // this will pass the refernce of previous "this" 
+                error: function (oerror) {
+
+                }
+            })
         },
 
         fetchJobCode: function (sIndex) {
             var url = "/" + sIndex;
             var oModel = this.getView().getModel();
+
             oModel.read(url, {
                 urlParameters: {
                     "$expand": "jobCodeMappings",
@@ -80,23 +139,24 @@ sap.ui.define([
                 },
 
                 success: function (oJobCode) {
-                    debugger;
+
                     // due to asy call this will not refer the current object
                     var oRoleModel = this.getView().getModel("roles");
                     //var oArray = [];// this will replace the current value so we need to use getProperty
                     var oArray = oRoleModel.getProperty("/jobCodes");
-                    for (var i = 0; i < oJobCode.jobCodeMappings.results.length; i++) {
-                        var tmp = {
-                            "externalCode": oJobCode.externalCode,
-                            "name": oJobCode.name_localized,
-                            "jobCode": oJobCode.jobCodeMappings.results[i].jobCode
-                        }
-                        oArray.push(tmp);
+                    //for (var i = 0; i < oJobCode.jobCodeMappings.results.length; i++) {
+                    var tmp = {
+                        "externalCode": oJobCode.externalCode,
+                        "name": oJobCode.name_localized,
+                        "jobCodeMap": oJobCode.jobCodeMappings.results
                     }
+
+                    oArray.push(tmp);
+                    // }
                     oRoleModel.setProperty("/jobCodes", oArray);
                 }.bind(this), // this will pass the refernce of previous "this" 
                 error: function (oerror) {
-                    debugger;
+
                 }
             })
         },
@@ -115,18 +175,19 @@ sap.ui.define([
                     var oRoleModel = this.getView().getModel("roles");
                     //var oArray = [];// this will replace the current value so we need to use getProperty
                     var oArray = oRoleModel.getProperty("/jobCompetencies");
-                    for (var i = 0; i < oJobCompetency.roleCompetencyMappings.results.length; i++) {
-                        var tmp = {
-                            "externalCode": oJobCompetency.externalCode,
-                            "name": oJobCompetency.name_localized,
-                            "jobCompetency": oJobCompetency.roleCompetencyMappings.results[i].competencyNav.name_localized
-                        }
-                        oArray.push(tmp);
+                    //for (var i = 0; i < oJobCompetency.roleCompetencyMappings.results.length; i++) {
+                    var tmp = {
+                        "externalCode": oJobCompetency.externalCode,
+                        "name": oJobCompetency.name_localized,
+                        // "jobCompetency": oJobCompetency.roleCompetencyMappings.results[i].competencyNav.name_localized
+                        "jobCompetencyMap": oJobCompetency.roleCompetencyMappings.results
                     }
+                    oArray.push(tmp);
+                    // }                  
                     oRoleModel.setProperty("/jobCompetencies", oArray);
                 }.bind(this), // this will pass the refernce of previous "this" 
                 error: function (oerror) {
-                    debugger;
+
                 }
             })
         },

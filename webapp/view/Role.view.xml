@@ -14,11 +14,12 @@
         <content>
             <SplitApp id="id-role-splitapp">
                 <masterPages>
+                <ScrollContainer id="_IDGenScrollContainer1" vertical="true" height="100%">
                     <List
                         mode="MultiSelect"
                         id="idList"
                         selectionChange="onSelectItem"
-                        growingScrollToLoad="true"
+                        
                         items="{path: '/RoleEntity'}"
                     >
                         <items>
@@ -27,6 +28,7 @@
                             />
                         </items>
                     </List>
+                    </ScrollContainer>
                 </masterPages>
             </SplitApp>
         </content>

@@ -26,6 +26,9 @@ sap.ui.define([
                     ],
                     "jobCompetencies":[
 
+                    ],
+                    "jobDescription":[
+                        
                     ]
                 }
                 var oModel = new JSONModel(oStructure);
