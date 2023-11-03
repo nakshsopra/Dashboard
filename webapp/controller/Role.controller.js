@@ -130,6 +130,7 @@ sap.ui.define([
                         "role": oRoleDescription.results[0].role,
                         "roleshortDescription": oRoleDescription.results[0].shortDesciptions.results[0].desc_localized,
                         "rolelongDescription": oRoleDescription.results[0].longDesciptions.results[0].desc_localized,
+
                     }
 
                     oArray.push(tmp);

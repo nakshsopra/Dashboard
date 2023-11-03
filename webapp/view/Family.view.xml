@@ -21,7 +21,7 @@
                     >
                     <items>
                     
-                    <ObjectListItem id="_IDGenObjectListItem1"  title="{name_localized}" 
+                    <ObjectListItem id="_IDGenObjectListItem1"  title="{name_en_US}" 
                     intro="{position}" 
                     ></ObjectListItem>
                     

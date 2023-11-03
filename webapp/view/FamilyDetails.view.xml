@@ -18,7 +18,6 @@
                 <IconTabFilter
                     id="_IDGenIconTabFilter1"
                     text="Roles"
-                    icon="sap-icon://accelerated"
                 >
                     <content>
                         <Table
@@ -50,14 +49,12 @@
                 <!-- Tab2 -->
                 <IconTabFilter
                     id="_IDGenIconTabFilter2"
-                    text="Family Skills"
-                    icon="sap-icon://supplier"
+                    text="Skills"
                 />
                 <!-- Tab3 -->
                 <IconTabFilter
                     id="_IDGenIconTabFilter3"
-                    text="Family Competencies"
-                    icon="sap-icon://home"
+                    text="Competencies"
                 />
             </items>
         </IconTabBar>
